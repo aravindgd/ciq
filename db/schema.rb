@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415061251) do
+ActiveRecord::Schema.define(version: 20140415062008) do
 
   create_table "services", force: true do |t|
     t.string   "name"
@@ -19,17 +19,47 @@ ActiveRecord::Schema.define(version: 20140415061251) do
     t.datetime "updated_at"
   end
 
+  create_table "services_vendors", force: true do |t|
+    t.integer  "vendor_id"
+    t.integer  "service_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "services_vendors", ["service_id"], name: "index_services_vendors_on_service_id"
+  add_index "services_vendors", ["vendor_id"], name: "index_services_vendors_on_vendor_id"
+
   create_table "technologies", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "technologies_vendors", force: true do |t|
+    t.integer  "vendor_id"
+    t.integer  "technology_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "technologies_vendors", ["technology_id"], name: "index_technologies_vendors_on_technology_id"
+  add_index "technologies_vendors", ["vendor_id"], name: "index_technologies_vendors_on_vendor_id"
+
   create_table "testimonials", force: true do |t|
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "testimonials_vendors", force: true do |t|
+    t.integer  "vendor_id"
+    t.integer  "testimonial_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "testimonials_vendors", ["testimonial_id"], name: "index_testimonials_vendors_on_testimonial_id"
+  add_index "testimonials_vendors", ["vendor_id"], name: "index_testimonials_vendors_on_vendor_id"
 
   create_table "vendors", force: true do |t|
     t.string   "company"
@@ -44,6 +74,7 @@ ActiveRecord::Schema.define(version: 20140415061251) do
     t.string   "git_link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_featured"
   end
 
   create_table "works", force: true do |t|
