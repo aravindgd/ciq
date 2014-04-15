@@ -1,3 +1,3 @@
 class Testimonial < ActiveRecord::Base
-	has_and_belongs_to_many :vendors
+	belongs_to :vendors
 end

@@ -14,4 +14,5 @@ group :development do
 end
 gem "binding_of_caller"
 gem 'bootstrap-sass', '~> 3.1.1'
-
+gem 'sunspot_rails'
+gem 'sunspot_solr'

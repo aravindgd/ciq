@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415062008) do
+ActiveRecord::Schema.define(version: 20140415083623) do
 
   create_table "services", force: true do |t|
     t.string   "name"
@@ -49,17 +49,10 @@ ActiveRecord::Schema.define(version: 20140415062008) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "testimonials_vendors", force: true do |t|
     t.integer  "vendor_id"
-    t.integer  "testimonial_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
-  add_index "testimonials_vendors", ["testimonial_id"], name: "index_testimonials_vendors_on_testimonial_id"
-  add_index "testimonials_vendors", ["vendor_id"], name: "index_testimonials_vendors_on_vendor_id"
+  add_index "testimonials", ["vendor_id"], name: "index_testimonials_on_vendor_id"
 
   create_table "vendors", force: true do |t|
     t.string   "company"
@@ -74,7 +67,7 @@ ActiveRecord::Schema.define(version: 20140415062008) do
     t.string   "git_link"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_featured"
+    t.boolean  "is_featured",      default: false
   end
 
   create_table "works", force: true do |t|
@@ -84,6 +77,7 @@ ActiveRecord::Schema.define(version: 20140415062008) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "number_of_views", default: 0
   end
 
   add_index "works", ["vendor_id"], name: "index_works_on_vendor_id"
