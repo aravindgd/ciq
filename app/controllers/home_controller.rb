@@ -1,12 +1,12 @@
 class HomeController < ApplicationController
 	def index
-				Rails.logger.info "*******************************"
-				Rails.logger.info "Enterprise"
-				Rails.logger.info "*******************************"
+		Rails.logger.info "*******************************"
+		Rails.logger.info "Enterprise"
+		Rails.logger.info "*******************************"
 		@vendor_list_for_enterprise = get_vendor_list("Enterprise")
 		Rails.logger.info "*******************************"
-				Rails.logger.info "B2B"
-				Rails.logger.info "*******************************"
+		Rails.logger.info "B2B"
+		Rails.logger.info "*******************************"
 
 		@vendor_list_for_b2b =  get_vendor_list("B2B")
 		Rails.logger.info @vendor_list_for_enterprise
@@ -43,15 +43,14 @@ class HomeController < ApplicationController
 				Rails.logger.info "*******************************"
 			end
 			sum_of_counts = testi_word_count + service_word_count + title_word_count
-				Rails.logger.info "*******************************"
+			Rails.logger.info "*******************************"
 			Rails.logger.info "sum_of_counts"
 			Rails.logger.info sum_of_counts
-				Rails.logger.info "*******************************"
+			Rails.logger.info "*******************************"
 			if sum_of_counts!=0
 				vendor[v] = sum_of_counts
 			end
 		end
 		Hash[vendor.sort_by{|k, v| [v,k.works.sum(:number_of_views)] }.reverse].keys.take(4)
 	end
-
 end
