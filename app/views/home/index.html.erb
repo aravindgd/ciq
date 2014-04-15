@@ -1,7 +1,40 @@
 <div class="container">
 	<div class="row">
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-
+				<legend class="text-center">Listing vendors based on the precense of the frequency of the word Enterprise </legend>	
+		<% @vendor_list_for_enterprise.each do |vendor|%>
+		<% if not vendor.works.empty?%>
+		<div class="span3">
+			<div class="well well-sm">
+				  <%= image_tag "http://upload.wikimedia.org/wikipedia/commons/f/f6/Random_sky.jpg" %>
+				<span class="glyphicon glyphicon-picture"></span><%= vendor.works.first.title %>
+				<br/>
+				by <%= vendor.company %>
+				<hr class="micro">
+				<%= vendor.works.first.services.name%>
+			</div>
 		</div>
+		<% end %>
+		<% end %>
 	</div>
 </div>
+
+<div class="container">
+	<div class="row">
+				<legend class="text-center">Listing vendors based on the precense of the frequency of the word B2B </legend>	
+		<% @vendor_list_for_b2b.each do |vendor|%>
+		<% if not vendor.works.empty?%>
+		<div class="span3">
+			<div class="well well-sm">
+				  <%= image_tag "http://upload.wikimedia.org/wikipedia/commons/f/f6/Random_sky.jpg" %>
+				<span class="glyphicon glyphicon-picture"></span><%= vendor.works.first.title %>
+				<br/>
+				by <%= vendor.company %>
+				<hr class="micro">
+				<%= vendor.works.first.services.name%>
+			</div>
+		</div>
+		<% end %>
+		<% end %>
+	</div>
+</div>
+

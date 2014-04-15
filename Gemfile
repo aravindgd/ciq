@@ -13,6 +13,7 @@ group :development do
 	  gem "better_errors"
 end
 gem "binding_of_caller"
-gem 'bootstrap-sass', '~> 3.1.1'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem "twitter-bootstrap-rails", branch: "bootstrap3"
+

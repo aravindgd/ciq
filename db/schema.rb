@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415083623) do
+ActiveRecord::Schema.define(version: 20140415111951) do
 
   create_table "services", force: true do |t|
     t.string   "name"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20140415083623) do
 
   add_index "services_vendors", ["service_id"], name: "index_services_vendors_on_service_id"
   add_index "services_vendors", ["vendor_id"], name: "index_services_vendors_on_vendor_id"
+
+  create_table "services_works", force: true do |t|
+    t.integer  "service_id"
+    t.integer  "work_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "services_works", ["service_id"], name: "index_services_works_on_service_id"
+  add_index "services_works", ["work_id"], name: "index_services_works_on_work_id"
 
   create_table "technologies", force: true do |t|
     t.string   "name"
